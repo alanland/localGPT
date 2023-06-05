@@ -67,7 +67,8 @@ def main(device_type, ):
 
     print(f"Running on: {device}")
 
-    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl",
+    # hkunlp/instructor-xl
+    embeddings = HuggingFaceInstructEmbeddings(model_name="THUDM/chatglm-6b-int4",
                                                model_kwargs={"device": device, "low_memory": True, "low_cpu_mem_usage":True })
     # load the vectorstore
     db = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)

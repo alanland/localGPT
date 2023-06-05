@@ -23,9 +23,9 @@ def load_model():
     tokenizer = AutoTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
     model = AutoModel.from_pretrained(model_id,
-                                                load_in_8bit=True, # set these options if your GPU supports them!
+                                                #load_in_8bit=True, # set these options if your GPU supports them!
                                                 device_map='auto',
-                                                torch_dtype=torch.float16,
+                                                #torch_dtype=torch.float16,
                                                 low_cpu_mem_usage=True,
                                           trust_remote_code=True
                                              )

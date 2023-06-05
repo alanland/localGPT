@@ -5,6 +5,7 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline
 from constants import CHROMA_SETTINGS, PERSIST_DIRECTORY
 from transformers import LlamaTokenizer, LlamaForCausalLM, pipeline, AutoTokenizer
+import torch
 import click
 import gradio as gr
 
@@ -22,10 +23,10 @@ def load_model():
     tokenizer = AutoTokenizer.from_pretrained(model_id)
 
     model = AutoTokenizer.from_pretrained(model_id,
-                                             #   load_in_8bit=True, # set these options if your GPU supports them!
-                                             #   device_map=1#'auto',
-                                             #   torch_dtype=torch.float16,
-                                             #   low_cpu_mem_usage=True
+                                                load_in_8bit=True, # set these options if your GPU supports them!
+                                                device_map='auto',
+                                                torch_dtype=torch.float16,
+                                                low_cpu_mem_usage=True
                                              )
 
     pipe = pipeline(

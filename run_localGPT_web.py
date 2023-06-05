@@ -50,8 +50,8 @@ def load_model():
 #         device='cpu'
 #     else:
 #         device='cuda'
- 
-    
+
+
  ## for M1/M2 users:
 
 @click.command()
@@ -68,7 +68,7 @@ def main(device_type, ):
     print(f"Running on: {device}")
 
     embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl",
-                                               model_kwargs={"device": device, "low_memory": True})
+                                               model_kwargs={"device": device, "low_memory": True, "low_cpu_mem_usage":True })
     # load the vectorstore
     db = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
     retriever = db.as_retriever()

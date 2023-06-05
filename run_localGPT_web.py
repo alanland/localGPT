@@ -18,7 +18,7 @@ def load_model():
     subsequent runs will use the model from the disk.
     """
     model_id = "TheBloke/vicuna-7B-1.1-HF"
-    model_id = "THUDM/chatglm-6b"
+    model_id = "THUDM/chatglm-6b-int4"
     tokenizer = AutoTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
     model = AutoModel.from_pretrained(model_id,

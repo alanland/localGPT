@@ -4,7 +4,7 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline
 from constants import CHROMA_SETTINGS, PERSIST_DIRECTORY
-from transformers import LlamaTokenizer, LlamaForCausalLM, pipeline, AutoTokenizer
+from transformers import LlamaTokenizer, LlamaForCausalLM, pipeline, AutoTokenizer, AutoModel
 import torch
 import click
 import gradio as gr
@@ -20,9 +20,9 @@ def load_model():
     """
     model_id = "TheBloke/vicuna-7B-1.1-HF"
     model_id = "THUDM/chatglm-6b-int4"
-    tokenizer = LlamaTokenizer.from_pretrained(model_id,trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
-    model = LlamaForCausalLM.from_pretrained(model_id,
+    model = AutoModel.from_pretrained(model_id,
                                                 load_in_8bit=True, # set these options if your GPU supports them!
                                                 device_map='auto',
                                                 torch_dtype=torch.float16,

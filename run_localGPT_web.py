@@ -5,7 +5,6 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline
 from constants import CHROMA_SETTINGS, PERSIST_DIRECTORY
 from transformers import LlamaTokenizer, LlamaForCausalLM, pipeline, AutoTokenizer, AutoModel
-import torch
 import click
 import gradio as gr
 

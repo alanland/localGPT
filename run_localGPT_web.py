@@ -18,14 +18,14 @@ def load_model():
     subsequent runs will use the model from the disk.
     """
     model_id = "TheBloke/vicuna-7B-1.1-HF"
-    model_id = "THUDM/chatglm-6b-int4"
+    model_id = "THUDM/chatglm-6b-int8"
     tokenizer = AutoTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
     model = AutoModel.from_pretrained(model_id,
                                                 #load_in_8bit=True, # set these options if your GPU supports them!
                                                 device_map='auto',
                                                 #torch_dtype=torch.float16,
-                                                low_cpu_mem_usage=True,
+                                                #low_cpu_mem_usage=True,
                                           trust_remote_code=True
                                              )
 

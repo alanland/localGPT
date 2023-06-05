@@ -104,7 +104,7 @@ def main(device_type, ):
         msg.submit(respond, [msg, chatbot], [msg, chatbot])
         clear.click(lambda: None, None, chatbot, queue=False)
 
-    demo.launch(share=False, inbrowser=True)
+    demo.launch(share=True, inbrowser=True)
 
 
 if __name__ == "__main__":

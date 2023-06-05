@@ -20,13 +20,14 @@ def load_model():
     """
     # TheBloke/vicuna-7B-1.1-HF
     model_id = "THUDM/chatglm-6b-int4"
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    tokenizer = AutoTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
     model = AutoTokenizer.from_pretrained(model_id,
                                                 load_in_8bit=True, # set these options if your GPU supports them!
                                                 device_map='auto',
                                                 torch_dtype=torch.float16,
-                                                low_cpu_mem_usage=True
+                                                low_cpu_mem_usage=True,
+                                          trust_remote_code=True
                                              )
 
     pipe = pipeline(
@@ -70,7 +71,7 @@ def main(device_type, ):
     print(f"Running on: {device}")
 
     # hkunlp/instructor-xl
-    embeddings = HuggingFaceInstructEmbeddings(model_name="THUDM/chatglm-6b-int4",
+    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl",
                                                model_kwargs={"device": device})
     # load the vectorstore
     db = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)

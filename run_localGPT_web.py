@@ -18,8 +18,8 @@ def load_model():
     If you are running this for the first time, it will download a model for you.
     subsequent runs will use the model from the disk.
     """
-    model_id = "THUDM/chatglm-6b-int4"
     model_id = "TheBloke/vicuna-7B-1.1-HF"
+    model_id = "THUDM/chatglm-6b-int4"
     tokenizer = LlamaTokenizer.from_pretrained(model_id,trust_remote_code=True)
 
     model = LlamaForCausalLM.from_pretrained(model_id,

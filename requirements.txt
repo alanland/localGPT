@@ -13,3 +13,4 @@ accelerate
 bitsandbytes
 click
 openpyxl
+gradio==3.33.1
